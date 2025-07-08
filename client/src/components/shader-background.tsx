@@ -21,7 +21,7 @@ const fragmentShader = `
     float amplitude = 0.5;
     float frequency = 1.0;
     
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 6; i++) {
       value += amplitude * noise(p * frequency);
       amplitude *= 0.5;
       frequency *= 2.0;
@@ -30,26 +30,52 @@ const fragmentShader = `
     return value;
   }
   
+  float flow(vec2 p, float t) {
+    float angle = fbm(p * 0.5 + t * 0.1) * 6.28318;
+    return sin(angle) * 0.5 + 0.5;
+  }
+  
   void main() {
     vec2 uv = gl_FragCoord.xy / resolution.xy;
+    vec2 center = vec2(0.5, 0.5);
     
     // Base color based on theme
-    vec3 baseColor = mix(vec3(0.96, 0.96, 0.96), vec3(0.07, 0.07, 0.07), isDark);
+    vec3 baseColor = mix(vec3(0.95, 0.95, 0.95), vec3(0.05, 0.05, 0.05), isDark);
     
-    // Subtle noise pattern
-    float n = fbm(uv * 100.0 + time * 0.05);
-    n = mix(n, fbm(uv * 200.0 + time * 0.02), 0.3);
+    // Create flowing patterns
+    float flowPattern = flow(uv * 2.0, time);
+    float flowPattern2 = flow(uv * 3.0 + vec2(100.0), time * 0.7);
     
-    // Very subtle grain effect
-    vec3 color = baseColor + n * 0.015;
+    // Noise layers
+    float n1 = fbm(uv * 8.0 + time * 0.05);
+    float n2 = fbm(uv * 16.0 + time * 0.03);
+    float n3 = fbm(uv * 32.0 + time * 0.02);
     
-    // Add very subtle flow
-    float flow = sin(uv.x * 8.0 + time * 0.1) * sin(uv.y * 8.0 + time * 0.15) * 0.008;
-    color += flow;
+    // Combine noise with flow
+    float combined = n1 * 0.5 + n2 * 0.3 + n3 * 0.2;
+    combined = mix(combined, flowPattern, 0.3);
+    combined = mix(combined, flowPattern2, 0.2);
     
-    // Add subtle radial gradient
-    float radial = 1.0 - length(uv - 0.5) * 0.5;
-    color *= mix(0.98, 1.02, radial);
+    // Create depth with radial gradient
+    float radial = 1.0 - length(uv - center) * 0.8;
+    
+    // Wave patterns
+    float wave1 = sin(uv.x * 12.0 + time * 0.5) * cos(uv.y * 8.0 + time * 0.3);
+    float wave2 = sin(uv.x * 6.0 + time * 0.7) * cos(uv.y * 10.0 + time * 0.4);
+    
+    // Combine all elements
+    float final = combined * 0.7 + wave1 * 0.15 + wave2 * 0.15;
+    final *= radial;
+    
+    // Apply to base color
+    vec3 color = baseColor + final * 0.08;
+    
+    // Add subtle gradient overlay
+    float gradient = mix(1.0, 0.95, uv.y);
+    color *= gradient;
+    
+    // Enhance contrast slightly
+    color = mix(color, smoothstep(0.0, 1.0, color), 0.3);
     
     gl_FragColor = vec4(color, 1.0);
   }
@@ -151,7 +177,7 @@ export function ShaderBackground() {
       className="fixed inset-0 z-0"
       style={{ 
         pointerEvents: 'none',
-        opacity: 0.6 
+        opacity: 0.8 
       }}
     />
   );

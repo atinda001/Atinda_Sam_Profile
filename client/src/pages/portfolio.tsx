@@ -96,8 +96,8 @@ export default function Portfolio() {
           {/* Left Sidebar */}
           <div className="w-1/4 min-h-screen p-8 border-r border-border/30 relative z-10">
             <div className="mb-8">
-              <h1 className="text-2xl font-light mb-2">Samson Atinda</h1>
-              <p className="text-sm text-muted-foreground">Designer & Developer</p>
+              <h1 className="font-playfair text-3xl font-medium mb-2">Samson Atinda</h1>
+              <p className="text-sm text-muted-foreground font-inter">Designer & Developer</p>
             </div>
             
             <Navigation 
@@ -132,8 +132,8 @@ export default function Portfolio() {
             <div className="absolute inset-0 bg-background/95 backdrop-blur-sm">
               <div className="p-8 pt-16">
                 <div className="mb-8">
-                  <h1 className="text-2xl font-light mb-2">Samson Atinda</h1>
-                  <p className="text-sm text-muted-foreground">Designer & Developer</p>
+                  <h1 className="font-playfair text-3xl font-medium mb-2">Samson Atinda</h1>
+                  <p className="text-sm text-muted-foreground font-inter">Designer & Developer</p>
                 </div>
                 
                 <Navigation 

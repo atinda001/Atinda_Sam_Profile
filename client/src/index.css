@@ -65,6 +65,10 @@
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   }
 
+  .font-playfair {
+    font-family: 'Playfair Display', serif;
+  }
+
   .monospaced body,
   .monospaced .font-inter {
     font-family: 'Courier New', 'Monaco', 'Lucida Console', monospace;

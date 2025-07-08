@@ -52,20 +52,39 @@ export function ContentSections({
 
 function HomeSection({ featuredProjects }: { featuredProjects: Project[] }) {
   return (
-    <div className="space-y-8">
-      <div className="mb-12">
-        <h2 className="text-4xl font-light mb-4 text-accent">Kenyan Roots, Global Aspirations</h2>
-        <p className="text-lg leading-relaxed max-w-3xl">
-          A multidisciplinary African creative specializing in development, design, and education. 
-          I celebrate and amplify voices and stories that resonate with African narratives while 
-          building bridges to global audiences.
-        </p>
+    <div className="space-y-16 py-8">
+      <div className="space-y-8">
+        <div>
+          <h1 className="font-playfair text-6xl font-medium mb-6 leading-tight">
+            I build.<br />
+            I speak.<br />
+            I design.
+          </h1>
+          <p className="text-xl leading-relaxed max-w-2xl opacity-80">
+            Multidisciplinary African creative bridging tradition with innovation.
+          </p>
+        </div>
+        
+        <div className="space-y-4 max-w-2xl">
+          <p className="text-lg leading-relaxed">
+            Born in Kenya, rooted in African storytelling, driven by global possibilities. 
+            Every pixel, every line of code, every word carries the weight of heritage 
+            and the lightness of dreams.
+          </p>
+          <p className="text-lg leading-relaxed opacity-70">
+            Through development, design, and education, I create digital experiences 
+            that honor our past while building our future.
+          </p>
+        </div>
       </div>
       
-      <div className="space-y-6">
-        {featuredProjects.map((project) => (
-          <ProjectLink key={project.id} project={project} />
-        ))}
+      <div className="pt-8">
+        <h3 className="font-playfair text-2xl mb-6 opacity-60">Featured Work</h3>
+        <div className="space-y-4">
+          {featuredProjects.slice(0, 3).map((project) => (
+            <ProjectLink key={project.id} project={project} featured />
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -73,24 +92,82 @@ function HomeSection({ featuredProjects }: { featuredProjects: Project[] }) {
 
 function ProjectsSection({ projects }: { projects: Project[] }) {
   return (
-    <div className="space-y-8">
-      {projects.map((project) => (
-        <ProjectLink key={project.id} project={project} large />
-      ))}
+    <div className="space-y-12 py-8">
+      <h2 className="font-playfair text-5xl font-medium mb-12">
+        Creative<br />
+        Expressions
+      </h2>
+      <div className="space-y-8">
+        {projects.map((project) => (
+          <ProjectLink key={project.id} project={project} large />
+        ))}
+      </div>
     </div>
   );
 }
 
 function InfoSection({ infoContent }: { infoContent: Content[] }) {
   return (
-    <div className="max-w-2xl space-y-6">
-      {infoContent.map((content) => (
-        <div key={content.id}>
-          <p className="text-lg leading-relaxed">
-            {content.body}
-          </p>
+    <div className="space-y-16 py-8">
+      <div className="space-y-12">
+        <div>
+          <h2 className="font-playfair text-5xl font-medium mb-8">
+            Stories from<br />
+            the Heart of Africa
+          </h2>
         </div>
-      ))}
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="space-y-6">
+            <div>
+              <h3 className="font-playfair text-2xl mb-4 text-accent">Origin</h3>
+              <p className="text-lg leading-relaxed">
+                Born in 1994 in Nairobi, Kenya. Raised where acacia trees meet digital dreams, 
+                where Ubuntu philosophy shapes user experience, and where the rhythm of 
+                traditional drums guides the flow of modern interfaces.
+              </p>
+            </div>
+            
+            <div>
+              <h3 className="font-playfair text-2xl mb-4 text-accent">Philosophy</h3>
+              <p className="text-lg leading-relaxed">
+                I believe web design can be more diverse and inspiring when it carries 
+                the weight of authentic stories. Every project is a canvas for celebrating 
+                African narratives in the digital space.
+              </p>
+            </div>
+          </div>
+          
+          <div className="space-y-6">
+            <div>
+              <h3 className="font-playfair text-2xl mb-4 text-accent">Mission</h3>
+              <p className="text-lg leading-relaxed">
+                To amplify African voices in technology and design. To build bridges between 
+                traditional wisdom and digital innovation. To mentor the next generation 
+                of African creatives who will shape our digital future.
+              </p>
+            </div>
+            
+            <div>
+              <h3 className="font-playfair text-2xl mb-4 text-accent">Vision</h3>
+              <p className="text-lg leading-relaxed">
+                A future where African creativity leads global design conversations. 
+                Where our stories aren't just told, but experienced through 
+                immersive digital landscapes that honor our heritage.
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div className="border-l-4 border-accent pl-6 max-w-3xl">
+          <p className="font-playfair text-2xl italic leading-relaxed">
+            "Ubuntu ngumuntu ngabantu" — I am because we are. 
+            In every line of code, every design decision, every mentorship moment, 
+            this philosophy guides my work toward collective elevation.
+          </p>
+          <p className="text-sm opacity-60 mt-4">Traditional African philosophy</p>
+        </div>
+      </div>
     </div>
   );
 }
@@ -110,45 +187,68 @@ function ContactSection() {
   ];
 
   return (
-    <div className="space-y-8">
-      <div className="space-y-2">
-        {socialLinks.map((link) => (
-          <a
-            key={link.name}
-            href={link.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block hover:opacity-70 transition-opacity duration-200"
-          >
-            {link.name} ↗
-          </a>
-        ))}
+    <div className="space-y-16 py-8">
+      <div>
+        <h2 className="font-playfair text-5xl font-medium mb-8">
+          Let's Create<br />
+          Together
+        </h2>
+        <p className="text-xl leading-relaxed max-w-2xl opacity-80">
+          Ready to build something extraordinary? Whether it's a groundbreaking project, 
+          a speaking opportunity, or mentorship, I'd love to connect.
+        </p>
       </div>
       
-      <div className="space-y-2">
-        {contactInfo.map((info) => (
-          <a
-            key={info.name}
-            href={info.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block hover:opacity-70 transition-opacity duration-200"
-          >
-            {info.name} ↗
-          </a>
-        ))}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div>
+          <h3 className="font-playfair text-2xl mb-6 text-accent">Digital Spaces</h3>
+          <div className="space-y-3">
+            {socialLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block hover:opacity-70 transition-opacity duration-200 text-lg"
+              >
+                {link.name} ↗
+              </a>
+            ))}
+          </div>
+        </div>
+        
+        <div>
+          <h3 className="font-playfair text-2xl mb-6 text-accent">Direct Contact</h3>
+          <div className="space-y-3">
+            {contactInfo.map((info) => (
+              <a
+                key={info.name}
+                href={info.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block hover:opacity-70 transition-opacity duration-200 text-lg"
+              >
+                {info.name} ↗
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
       
-      <div className="space-y-1 text-sm text-muted-foreground">
-        <p>Available for freelance projects</p>
-        <p>Open to speaking engagements</p>
-        <p>Mentorship opportunities welcome</p>
+      <div className="border-l-4 border-accent pl-6 space-y-2">
+        <p className="text-lg font-medium">Currently Open For:</p>
+        <div className="space-y-1 text-muted-foreground">
+          <p>• Freelance design & development projects</p>
+          <p>• Speaking engagements on African tech & design</p>
+          <p>• Mentorship opportunities for emerging creatives</p>
+          <p>• Collaborative initiatives celebrating African innovation</p>
+        </div>
       </div>
     </div>
   );
 }
 
-function ProjectLink({ project, large = false }: { project: Project; large?: boolean }) {
+function ProjectLink({ project, large = false, featured = false }: { project: Project; large?: boolean; featured?: boolean }) {
   const handleClick = () => {
     if (project.url && project.url !== "#") {
       window.open(project.url, "_blank", "noopener,noreferrer");
@@ -158,16 +258,23 @@ function ProjectLink({ project, large = false }: { project: Project; large?: boo
   return (
     <div
       onClick={handleClick}
-      className={`cursor-pointer hover:opacity-70 transition-opacity duration-200 ${
+      className={`cursor-pointer hover:opacity-70 transition-all duration-300 ${
         project.url === "#" ? "cursor-default" : ""
-      }`}
+      } ${featured ? "border-l-2 border-accent/30 pl-4" : ""}`}
     >
-      <h3 className={`font-light mb-1 ${large ? "text-3xl" : "text-2xl"}`}>
+      <h3 className={`font-playfair font-medium mb-2 ${
+        large ? "text-4xl" : featured ? "text-2xl" : "text-xl"
+      }`}>
         {project.title}
       </h3>
-      <p className="text-sm text-muted-foreground">
+      <p className="text-sm text-muted-foreground font-inter">
         {project.date} / {project.role}
       </p>
+      {project.description && large && (
+        <p className="text-base mt-2 opacity-70 max-w-2xl">
+          {project.description}
+        </p>
+      )}
     </div>
   );
 }
