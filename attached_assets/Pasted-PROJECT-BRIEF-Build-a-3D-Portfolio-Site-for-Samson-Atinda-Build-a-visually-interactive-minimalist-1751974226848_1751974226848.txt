@@ -1,0 +1,92 @@
+PROJECT BRIEF: Build a 3D Portfolio Site for Samson Atinda
+
+Build a visually interactive, minimalist 3D portfolio website for Samson Atinda, a multidisciplinary African creative — developer, designer, and educator.
+
+🌐 Inspiration:
+Overall layout and interaction inspired by https://p5aholic.me/projects
+
+Additional style inspiration from design references shared (Google Drive):
+
+https://drive.google.com/file/d/1pE0s75eaezGUFkm0sFfdMW8vddi1X6I_/view
+
+https://drive.google.com/file/d/1d-EQmbR7YAJCiscgkju2pCpdMO_0kjT4/view
+
+https://drive.google.com/file/d/1lC9yuqaGStO83uAQHGt7k1C83smslXH4/view
+
+https://drive.google.com/file/d/1xeYxiTV6KWc_RK-6xijzUF1cAJLFbjXs/view
+
+🎯 Goals:
+Showcase personality, portfolio, and multi-disciplinary projects
+
+Serve as a professional reference (like a resume/CV)
+
+Inspire others with creative and technical expression
+
+🛠 Tech Stack:
+React.js (frontend)
+
+TailwindCSS (styling)
+
+Three.js + React Three Fiber (3D canvas)
+
+GLSL shaders via raw WebGL or Three.js custom shaders
+
+GSAP for scroll-based and entrance animations
+
+Tweakpane for live parameter tweaking (developer mode)
+
+Framer Motion for transitions (optional)
+
+JSON to store and dynamically load project data
+
+📐 Structure:
+1. Landing Page
+
+Name: Samson Atinda
+
+Tagline: “I build. I speak. I design.”
+
+Background: WebGL shader animation (GLSL fragment shader inspired by The Book of Shaders — e.g., flow fields, generative lines, or particles)
+
+Intro animation using GSAP
+
+2. Project Gallery (Main View)
+
+Styled like p5aholic: grid of projects (each animated on hover)
+
+Each tile:
+
+Name, short description
+
+On click → opens external link in new tab (Fortune Kustoms, Spotify, etc.)
+
+Tiles dynamically loaded from a projects.json file
+
+3. About Me Page
+
+A bio section with scroll animation
+
+Timeline or visual narrative (use GSAP / Framer Motion)
+
+Quote: “I build to inspire. I design to express. I speak to empower.”
+
+4. Contact Page
+
+Clean section with form + social links (LinkedIn, GitHub, Spotify)
+
+5. Resume Download
+
+Button that links to a hosted PDF (can use Notion or Dropbox for now)
+
+🔧 Additional Dev Requirements:
+Mobile responsive
+
+Modular file structure
+
+Use React Three Fiber canvas as background with custom GLSL shader for generative background
+
+Allow easy toggling of visual settings via Tweakpane (for dev)
+
+Transitions between sections powered by GSAP
+
+Prepare for easy deployment via Netlify or Vercel
